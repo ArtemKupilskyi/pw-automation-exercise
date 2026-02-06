@@ -8,6 +8,7 @@ export class ProductsPage extends BasePage {
     private readonly productCards: Locator;
     private readonly productTitle: Locator;
     private readonly productAddButton: Locator;
+    private readonly productViewButton: Locator;
 
     private readonly confirmModal: Locator;
     private readonly continueShoppingButton: Locator;
@@ -21,6 +22,7 @@ export class ProductsPage extends BasePage {
         this.productCards = page.locator('.features_items .product-image-wrapper');
         this.productTitle = this.productCards.locator('.productinfo p');
         this.productAddButton = this.productCards.locator('.add-to-cart');
+        this.productViewButton = this.productCards.locator('.nav-justified');
 
         this.confirmModal = page.locator('.modal-confirm');
         this.continueShoppingButton = page.getByRole('button', { name: 'Continue Shopping' });
@@ -47,5 +49,9 @@ export class ProductsPage extends BasePage {
         await expect(this.confirmModal).toBeVisible();
         await expect(this.confirmModal).toContainText('Added!');
         await this.continueShoppingButton.click();
+    }
+
+    async goToProductDetails(productNumber: number) {
+        await this.productViewButton.nth(productNumber - 1).click();
     }
 }

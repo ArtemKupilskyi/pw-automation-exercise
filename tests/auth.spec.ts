@@ -12,7 +12,7 @@ test.describe('Authorization', () => {
         await homePage.checkHomePageSection();
     });
 
-    test('User registration', async ({ loginPage, signupPage, headerPage, homePage }) => {
+    test('Verify user registration', async ({ loginPage, signupPage, headerPage, homePage }) => {
         const user = await generateRandomUserData();
         await headerPage.goToSelectedOption(MenuOption.SIGNUP_LOGIN);
 
@@ -24,7 +24,7 @@ test.describe('Authorization', () => {
     });
 
 
-    test('Login with correct credentials', async ({ request, headerPage, loginPage }) => {
+    test('Verify login with correct credentials', async ({ request, headerPage, loginPage }) => {
         const user = await generateRandomUserData();
         await createUser(request, user);
 
@@ -36,7 +36,7 @@ test.describe('Authorization', () => {
     });
 
 
-    test('Login with incorrect credentials', async ({ headerPage, loginPage }) => {
+    test('Verify Login with incorrect credentials', async ({ headerPage, loginPage }) => {
         await headerPage.goToSelectedOption(MenuOption.SIGNUP_LOGIN);
         await loginPage.login('wrong@email.com', 'wrongPass');
 
@@ -44,7 +44,7 @@ test.describe('Authorization', () => {
     });
 
 
-    test('Create and delete user API', async ({ page, request }) => {
+    test('Verify create and delete user API', async ({ page, request }) => {
         const user = await generateRandomUserData();
 
         await createUser(request, user);

@@ -34,4 +34,15 @@ export class CartPage extends BasePage {
     async proceedToCheckout() {
         await this.checkoutButton.click();
     }
+
+    async getCartProductDetails(productNumber: number){
+        const rows = this.productList;
+        const selectedRow = rows.nth(productNumber - 1);
+        const title = await selectedRow.locator('.cart_description h4').textContent();
+        const price = await selectedRow.locator('.cart_price p').textContent();
+        const quantity = await selectedRow.locator('.cart_quantity button').textContent();
+        const products = [];
+        products.push({ title, price, quantity });
+        return products;
+    }
 }

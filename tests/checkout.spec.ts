@@ -6,7 +6,7 @@ import { MenuOption } from '../page-object-model/pages/HeaderPage';
 
 test.describe('Checkout', () => {
 
-    test('Place order as new user', async ({ page, request, homePage, loginPage, headerPage, productsPage, cartPage, checkoutPage, paymentPage }) => {
+    test('Verify place order as new user', async ({ page, request, homePage, loginPage, headerPage, productsPage, cartPage, checkoutPage, paymentPage }) => {
         await page.goto('/');
         await homePage.closeCookies();
         await homePage.checkHomePageSection();
